@@ -1,0 +1,192 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-drag: none;
+  -moz-user-drag: none;
+  -webkit-user-drag: none;
+}
+
+html, body {
+  border: 0;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: lighter;
+}
+
+
+#wrapper {
+  min-height: 800px;
+  width: 100vw;
+  height: 100vh;
+  }
+
+#main {
+  float: left;
+  width: 60%;
+  height: 100%;
+  background-color: hsla(0,0%,90%,1);
+}
+
+#controlPanel {
+  float: left;
+  width: 40%;
+  height: 100%;
+  background-color: hsla(0,0%,20%,1);
+  box-shadow: 0 14px 35px rgba(0,0,0,0.55), 0 10px 10px rgba(0,0,0,0.32);
+}
+
+@media screen and (max-width: 1200px) {
+  #main, #controlPanel {
+    width: 100%;
+  }
+}
+
+#watch {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  float: left;
+  width: 150px;
+  height: 600px;
+
+  margin-top: -300px;
+  margin-left: -75px;
+}
+
+.sideButtons {
+  position: relative;
+  top: 50%;
+  margin-top: -60px;
+  width: 5px;
+  height: 120px;
+  visibility: visible;
+
+}
+
+#leftButton {
+  float: left;
+  visibility: visible;
+
+}
+
+#rightButton {
+  float: right;
+}
+
+#homeButton {
+  height: 40%;
+  width: 100%;
+  background-color: grey;
+  box-shadow: 0 -1px 1px hsla(0,0%,0%,0.19), 0 3px 0px hsla(0,0%,30%,1), 0 8px 20px hsla(0,0%,0%,0.19), 0 4px 6px hsla(0,0%,0%,0.23);
+}
+
+#backButton {
+  position: relative;
+  top: 20%;
+  height: 40%;
+  width: 100%;
+  background-color: grey;
+  box-shadow: 0 -1px 1px hsla(0,0%,0%,0.19), 0 3px 0px hsla(0,0%,30%,1), 0 8px 20px hsla(0,0%,0%,0.19), 0 4px 6px hsla(0,0%,0%,0.23);
+}
+
+#zoomMore {
+  height: 40%;
+  width: 100%;
+  background-color: grey;
+  box-shadow: 0 -1px 1px hsla(0,0%,0%,0.19), 0 3px 0px hsla(0,0%,30%,1), 0 8px 20px hsla(0,0%,0%,0.19), 0 4px 6px hsla(0,0%,0%,0.23);
+}
+
+#zoomLess {
+  position: relative;
+  top: 20%;
+  height: 40%;
+  width: 100%;
+  background-color: grey;
+  box-shadow: 0 -1px 1px hsla(0,0%,0%,0.19), 0 3px 0px hsla(0,0%,30%,1), 0 8px 20px hsla(0,0%,0%,0.19), 0 4px 6px hsla(0,0%,0%,0.23);
+}
+
+
+#bracelet {
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  margin-left: -45px;
+  z-index: 10;
+  width: 90px;
+  height: 100%;
+  background-color: hsl(15, 33%, 30%);
+  border-radius: 7px;
+  box-shadow: 0 -1px 1px hsla(0,0%,0%,0.19), 0 3px 0px hsla(15,33%,15%,1), 0 8px 20px hsla(0,0%,0%,0.19), 0 4px 6px hsla(0,0%,0%,0.23);
+}
+
+#braceletMarks {
+  position: relative;
+  height: 120%;
+  width: 60%;
+  border: 3px dashed #1a0d00;
+  border-radius: 7px;
+  top: -10%;
+  left: 20%;
+}
+
+#screenWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  width: 120px;
+  height: 160px;
+  background-color: hsla(0,0%,0%,1);
+  text-align: center;
+  margin-left: -60px;
+  margin-top: -80px;
+}
+
+#frame {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border: 10px solid hsla(0,0%,30%,1);
+  box-sizing: content-box;
+  border-radius: 15px;
+  box-shadow: 0 4px 0px hsla(0,0%,10%,1), 0 9px 6px hsla(0,0%,10%,0.20), 0 8px 20px hsla(0,0%,0%,0.49);
+  z-index: 999;
+  pointer-events: none;
+  margin-left: -10px;
+  margin-top: -10px;
+}
+
+.screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.cpRow {
+  height: 40px;
+  margin: 20px;
+}
+
+.cpButton {
+  margin-right: 20px;
+  height: 40px;
+  width: 40px;
+  background-color: hsla(0,0%,90%,1);
+  border-radius: 5px;
+  float: left;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.cpRow > h3 {
+  float: left;
+  color: hsla(0,0%,90%,1);
+  margin-top: 9px;
+}
+
+#cpButton-4, #cpButton-5, #cpButton-6, #cpButton-7 {
+  visibility: hidden;
+}

@@ -1,0 +1,438 @@
+<html>
+  <head>
+    <title>iRave</title>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="screens.css">
+    <link rel="stylesheet" type="text/css" href="map.css">
+    <link rel="stylesheet" type="text/css" href="dep/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="dep/jquery-ui.structure.min.css">
+    <link rel="stylesheet" type="text/css" href="dep/jquery-ui.theme.min.css">
+
+
+    <script src="dep/jquery.min.js"></script>
+    <script src="dep/jquery-ui.min.js"></script>
+    <script src="dep/draggable.js"></script>
+    <script src="main.js"></script>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+      <div id="main">
+
+        <div id="watch">
+          <div id="bracelet">
+            <div id="braceletMarks">
+            </div>
+          </div>
+
+          <div id="screenWrapper">
+
+            <div class="screen" id="lockScreen" onclick="switchScreen('lockScreen')">
+              <h1>00:00</h1>
+              <h2> 01 jan 1970</h2>
+              <h3>></h3>
+            </div>
+
+            <div class="screen dragscroll" id="mainScreen">
+
+              <div id="mapButton" onclick="switchScreen('mapButton')">
+                <img src="img/map.svg"/>
+                <p>Map</p>
+              </div>
+
+              <div id="friendsButton" onclick="switchScreen('friendsButton')">
+                <img src="img/friends.svg"/>
+                <p>Friends</p>
+              </div>
+
+              <div id="settingsButton" onclick="switchScreen('settingsButton')">
+                <img src="img/settings.svg"/>
+                <p>Profile</p>
+              </div>
+
+            </div>
+
+            <div class="screen" id="settingsScreen">
+              <div class="settingsScreen" id="settingsScreen-1">
+              </div>
+              <div class="settingsScreen" id="settingsScreen-2">
+              </div>
+              <div class="settingsScreen" id="settingsScreen-3">
+                <p style="margin-top:30px;padding:20px">ecrã por acabar</p>
+              </div>
+            </div>
+
+            <div class="screen" id="confirmPurchase">
+              <div class="paymentButton" id="confirmButton" onclick="accept()">ACCEPT PAYMENT</div>
+              <div class="paymentButton" id="declineButton" onclick="decline()">DECLINE PAYMENT</div>
+            </div>
+
+            <div class="screen" id="successfulPurchase" onclick="goBack()">
+              <img src="img/success.svg"/>
+              <h3>Successful Payment</h3>
+            </div>
+
+            <div class="screen" id="failedPurchase" onclick="goBack()">
+              <img src="img/error.svg"/>
+              <h3 id="failedPurchaseReason">Payment cancelled</h3>
+            </div>
+
+            <div class="screen" id="mapScreen">
+
+              <div class="dragscroll" id="mapHolder">
+                <div id="interactMap"><img id="map" src="img/map.jpg"/> </div>
+                <section id="grid">
+
+                  <div class="cell" id="A1"> </div>
+                  <div class="cell" id="A2"> </div>
+                  <div class="cell" id="A3"> </div>
+                  <div class="cell" id="A4"> </div>
+                  <div class="cell" id="A5"> </div>
+                  <div class="cell" id="A6"> </div>
+                  <div class="cell" id="A7"> </div>
+                  <div class="cell" id="A8"> </div>
+                  <div class="cell" id="A9"> </div>
+                  <div class="cell" id="A10"> </div>
+                  <div class="cell" id="A11"> </div>
+                  <div class="cell" id="A12"> </div>
+                  <div class="cell" id="A13"> </div>
+                  <div class="cell" id="A14"> </div>
+                  <div class="cell" id="A15"> </div>
+                  <div class="cell" id="A16"> </div>
+                  <div class="cell" id="A17"> </div>
+                  <div class="cell" id="A18"> </div>
+                  <div class="cell" id="A19"> </div>
+                  <div class="cell" id="A20"></div>
+
+                  <div class="cell" id="B1"> </div>
+                  <div class="cell" id="B2"> </div>
+                  <div class="cell" id="B3"> </div>
+                  <div class="cell" id="B4"> </div>
+                  <div class="cell" id="B5"> </div>
+                  <div class="cell" id="B6"> </div>
+                  <div class="cell" id="B7"> </div>
+                  <div class="cell" id="B8"> </div>
+                  <div class="cell" id="B9"> </div>
+                  <div class="cell" id="B10"> </div>
+                  <div class="cell" id="B11"> </div>
+                  <div class="cell" id="B12"> </div>
+                  <div class="cell" id="B13"> </div>
+                  <div class="cell" id="B14"> </div>
+                  <div class="cell" id="B15"> </div>
+                  <div class="cell" id="B16"> </div>
+                  <div class="cell" id="B17"> </div>
+                  <div class="cell" id="B18"> </div>
+                  <div class="cell" id="B19"> </div>
+                  <div class="cell" id="B20"> </div>
+
+                  <div class="cell" id="C1"> </div>
+                  <div class="cell" id="C2"> </div>
+                  <div class="cell" id="C3"> </div>
+                  <div class="cell" id="C4"> </div>
+                  <div class="cell" id="C5"> </div>
+                  <div class="cell" id="C6"> </div>
+                  <div class="cell" id="C7"> </div>
+                  <div class="cell" id="C8"> </div>
+                  <div class="cell" id="C9"> </div>
+                  <div class="cell" id="C10"> </div>
+                  <div class="cell" id="C11"> </div>
+                  <div class="cell" id="C12"> </div>
+                  <div class="cell" id="C13"> </div>
+                  <div class="cell" id="C14"> </div>
+                  <div class="cell" id="C15"> </div>
+                  <div class="cell" id="C16"> </div>
+                  <div class="cell" id="C17"> </div>
+                  <div class="cell" id="C18"> </div>
+                  <div class="cell" id="C19"> </div>
+                  <div class="cell" id="C20"> </div>
+
+                  <div class="cell" id="D1"> </div>
+                  <div class="cell" id="D2"> </div>
+                  <div class="cell" id="D3"> </div>
+                  <div class="cell" id="D4"> </div>
+                  <div class="cell" id="D5"> </div>
+                  <div class="cell" id="D6"> </div>
+                  <div class="cell" id="D7"> </div>
+                  <div class="cell" id="D8"> </div>
+                  <div class="cell" id="D9"> </div>
+                  <div class="cell" id="D10"> </div>
+                  <div class="cell" id="D11"> </div>
+                  <div class="cell" id="D12"> </div>
+                  <div class="cell" id="D13"> </div>
+                  <div class="cell" id="D14"> </div>
+                  <div class="cell" id="D15"> </div>
+                  <div class="cell" id="D16"> </div>
+                  <div class="cell" id="D17"> </div>
+                  <div class="cell" id="D18"> </div>
+                  <div class="cell" id="D19"> </div>
+                  <div class="cell" id="D20"> </div>
+
+                  <div class="cell" id="E1"> </div>
+                  <div class="cell" id="E2"> </div>
+                  <div class="cell" id="E3"> </div>
+                  <div class="cell" id="E4"> </div>
+                  <div class="cell" id="E5"> </div>
+                  <div class="cell" id="E6"> </div>
+                  <div class="cell" id="E7"> </div>
+                  <div class="cell" id="E8"> </div>
+                  <div class="cell" id="E9"> </div>
+                  <div class="cell" id="E10"> </div>
+                  <div class="cell" id="E11"> </div>
+                  <div class="cell" id="E12"> </div>
+                  <div class="cell" id="E13"> </div>
+                  <div class="cell" id="E14"> </div>
+                  <div class="cell" id="E15"> </div>
+                  <div class="cell" id="E16"> </div>
+                  <div class="cell" id="E17"> </div>
+                  <div class="cell" id="E18"> </div>
+                  <div class="cell" id="E19"> </div>
+                  <div class="cell" id="E20"> </div>
+
+                  <div class="cell" id="F1"> </div>
+                  <div class="cell" id="F2"> </div>
+                  <div class="cell" id="F3"> </div>
+                  <div class="cell" id="F4"> </div>
+                  <div class="cell" id="F5"> </div>
+                  <div class="cell" id="F6"> </div>
+                  <div class="cell" id="F7"> </div>
+                  <div class="cell" id="F8"> </div>
+                  <div class="cell" id="F9"> </div>
+                  <div class="cell" id="F10"> </div>
+                  <div class="cell" id="F11"></div>
+                  <div class="cell" id="F12"> </div>
+                  <div class="cell" id="F13"> </div>
+                  <div class="cell" id="F14"> </div>
+                  <div class="cell" id="F15"> </div>
+                  <div class="cell" id="F16"> </div>
+                  <div class="cell" id="F17"> </div>
+                  <div class="cell" id="F18"> </div>
+                  <div class="cell" id="F19"> </div>
+                  <div class="cell" id="F20"> </div>
+
+                  <div class="cell" id="G1"> </div>
+                  <div class="cell" id="G2"> </div>
+                  <div class="cell" id="G3"> </div>
+                  <div class="cell" id="G4"> </div>
+                  <div class="cell" id="G5"> </div>
+                  <div class="cell" id="G6"> </div>
+                  <div class="cell" id="G7"> </div>
+                  <div class="cell" id="G8"> </div>
+                  <div class="cell" id="G9"> </div>
+                  <div class="cell" id="G10"> </div>
+                  <div class="cell" id="G11">  </div>
+                  <div class="cell" id="G12"> </div>
+                  <div class="cell" id="G13"> </div>
+                  <div class="cell" id="G14"> </div>
+                  <div class="cell" id="G15"> </div>
+                  <div class="cell" id="G16"> </div>
+                  <div class="cell" id="G17"> </div>
+                  <div class="cell" id="G18"> </div>
+                  <div class="cell" id="G19"> </div>
+                  <div class="cell" id="G20"> </div>
+
+                  <div class="cell" id="H1"> </div>
+                  <div class="cell" id="H2"> </div>
+                  <div class="cell" id="H3"> </div>
+                  <div class="cell" id="H4"> </div>
+                  <div class="cell" id="H5"> </div>
+                  <div class="cell" id="H6"> </div>
+                  <div class="cell" id="H7"> </div>
+                  <div class="cell" id="H8"> </div>
+                  <div class="cell" id="H9"> </div>
+                  <div class="cell" id="H10"> </div>
+                  <div class="cell" id="H11"> </div>
+                  <div class="cell" id="H12"> </div>
+                  <div class="cell" id="H13"> </div>
+                  <div class="cell" id="H14"> </div>
+                  <div class="cell" id="H15"> </div>
+                  <div class="cell" id="H16"> </div>
+                  <div class="cell" id="H17"> </div>
+                  <div class="cell" id="H18"> </div>
+                  <div class="cell" id="H19"> </div>
+                  <div class="cell" id="H20"> </div>
+
+                  <div class="cell" id="I1"> </div>
+                  <div class="cell" id="I2"> </div>
+                  <div class="cell" id="I3"> </div>
+                  <div class="cell" id="I4"> </div>
+                  <div class="cell" id="I5"> </div>
+                  <div class="cell" id="I6"> </div>
+                  <div class="cell" id="I7"> </div>
+                  <div class="cell" id="I8"> </div>
+                  <div class="cell" id="I9"> </div>
+                  <div class="cell"id="I10"> </div>
+                  <div class="cell" id="I11"> </div>
+                  <div class="cell" id="I12"> </div>
+                  <div class="cell" id="I13"> </div>
+                  <div class="cell" id="I14"> </div>
+                  <div class="cell" id="I15"> </div>
+                  <div class="cell" id="I16"> </div>
+                  <div class="cell" id="I17"> </div>
+                  <div class="cell" id="I18"> </div>
+                  <div class="cell" id="I19"> </div>
+                  <div class="cell"id="I20"> </div>
+
+                  <div class="cell" id="J1"> </div>
+                  <div class="cell" id="J2"> </div>
+                  <div class="cell" id="J3"> </div>
+                  <div class="cell" id="J4"> </div>
+                  <div class="cell" id="J5"> </div>
+                  <div class="cell" id="J6"> </div>
+                  <div class="cell" id="J7"> </div>
+                  <div class="cell" id="J8"> </div>
+                  <div class="cell" id="J9"> </div>
+                  <div class="cell" id="J10"> </div>
+                  <div class="cell" id="J11"> </div>
+                  <div class="cell" id="J12"> </div>
+                  <div class="cell" id="J13"> </div>
+                  <div class="cell" id="J14"> </div>
+                  <div class="cell" id="J15"> </div>
+                  <div class="cell" id="J16"> </div>
+                  <div class="cell" id="J17"> </div>
+                  <div class="cell" id="J18"> </div>
+                  <div class="cell" id="J19"> </div>
+                  <div class="cell" id="J20"> </div>
+
+                  <div class="cell" id="K1"> </div>
+                  <div class="cell" id="K2"> </div>
+                  <div class="cell" id="K3"> </div>
+                  <div class="cell" id="K4"> </div>
+                  <div class="cell" id="K5"> </div>
+                  <div class="cell" id="K6"> </div>
+                  <div class="cell" id="K7"> </div>
+                  <div class="cell" id="K8"> </div>
+                  <div class="cell" id="K9"> </div>
+                  <div class="cell" id="K10"> </div>
+                  <div class="cell" id="K11"> </div>
+                  <div class="cell" id="K12"> </div>
+                  <div class="cell" id="K13"> </div>
+                  <div class="cell" id="K14"> </div>
+                  <div class="cell" id="K15"> </div>
+                  <div class="cell" id="K16"> </div>
+                  <div class="cell" id="K17"> </div>
+                  <div class="cell" id="K18"> </div>
+                  <div class="cell" id="K19"> </div>
+                  <div class="cell" id="K20"> </div>
+
+                  <div class="cell" id="L1"> </div>
+                  <div class="cell" id="L2"> </div>
+                  <div class="cell" id="L3"> </div>
+                  <div class="cell" id="L4"> </div>
+                  <div class="cell" id="L5"> </div>
+                  <div class="cell" id="L6"> </div>
+                  <div class="cell" id="L7"> </div>
+                  <div class="cell" id="L8"> </div>
+                  <div class="cell" id="L9"> </div>
+                  <div class="cell" id="L10"> </div>
+                  <div class="cell" id="L11"> </div>
+                  <div class="cell" id="L12"> </div>
+                  <div class="cell" id="L13"> </div>
+                  <div class="cell" id="L14"> </div>
+                  <div class="cell" id="L15"> </div>
+                  <div class="cell" id="L16"> </div>
+                  <div class="cell" id="L17"> </div>
+                  <div class="cell" id="L18"> </div>
+                  <div class="cell" id="L19"> </div>
+                  <div class="cell" id="L20"> </div>
+                </section>
+              </div>
+
+              <img id="mapOptionsButton" src="img/earthglobe.svg" onclick="showMapOptions()">
+
+            </div>
+
+            <div class="screen" id="mapInfo">
+              <div id="mapInfoTitle">
+                <p>Title</p>
+                <img src="img/close.svg" onclick="hidePopUp()"/>
+                <p>11h-23h</p>
+
+
+              </div>
+
+              <div class="dragscroll" id="mapInfoContent">
+                <p></p>
+              </div>
+
+            </div>
+
+            <div class="screen dragscroll" id="mapOptions">
+              <div id="mapOptionsTitle">
+                <p>Options</p>
+                <img src="img/close.svg" onclick="hideMapOptions()"/>
+
+              </div>
+
+              <div class="mapOptionDiv"><img id="food" src="img/markers/food.svg" onclick="toggleMapOption('food')"> <p>Food</p></div>
+              <div class="mapOptionDiv"><img id="bus" src="img/markers/bus.svg" onclick="toggleMapOption('bus')"> <p>Bus</p></div>
+              <div class="mapOptionDiv"><img id="inem" src="img/markers/inem.svg" onclick="toggleMapOption('inem')"> <p>Health</p></div>
+              <div class="mapOptionDiv"><img id="money" src="img/markers/money.svg" onclick="toggleMapOption('money')"> <p>ATM</p></div>
+              <div class="mapOptionDiv"><img id="wifi" src="img/markers/wifi.svg" onclick="toggleMapOption('wifi')"> <p>WiFi</p></div>
+              <div class="mapOptionDiv"><img id="party" src="img/markers/party.svg" onclick="toggleMapOption('party')"> <p>Party</p></div>
+
+            </div>
+
+
+            <div class="screen" id="friendsScreen">
+
+            </div>
+
+
+
+            <div id="frame">
+            </div>
+
+          </div>
+
+          <div class="sideButtons" id="leftButton">
+            <div id="homeButton" onclick="homeScreen()"></div>
+            <div id="backButton" onclick="goBack()"></div>
+          </div>
+          <div class="sideButtons" id="rightButton">
+            <div id="zoomMore" onclick="zoomMore()"></div>
+            <div id="zoomLess" onclick="zoomLess()"></div>
+
+
+          </div>
+        </div>
+
+
+
+      </div>
+      <div id=controlPanel>
+        <div class="cpRow">
+          <div class="cpButton" id="cpButton-simulate" onclick="simulatePayment()" onmouseenter="hover(this)" onmouseout="unhover(this)"></div>
+          <h3>Simular pagamento (encostando relógio a sensor)</h3>
+        </div>
+        <div class="cpRow">
+          <div class="cpButton" id="cpButton-card" onclick="swapCard()" onmouseenter="hover(this)" onmouseout="unhover(this)"></div>
+          <h3 id="cpButton-card-text">Com cartão inserido</h3>
+        </div>
+        <div class="cpRow">
+          <div class="cpButton" id="cpButton-money" onclick="swapMoney()" onmouseenter="hover(this)" onmouseout="unhover(this)"></div>
+          <h3 id="cpButton-money-text">Com dinheiro</h3>
+        </div>
+        <div class="cpRow">
+          <div class="cpButton" id="cpButton-4"></div>
+        </div>
+        <div class="cpRow">
+          <div class="cpButton" id="cpButton-5"></div>
+        </div>
+        <div class="cpRow">
+          <div class="cpButton" id="cpButton-6"></div>
+        </div>
+        <div class="cpRow">
+          <div class="cpButton" id="cpButton-7"></div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

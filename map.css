@@ -1,0 +1,77 @@
+#mapHolder {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+#interactMap{
+  position: absolute;
+
+}
+
+#map{
+  width: auto;
+  height: 200%;
+
+}
+
+#grid{
+  position:absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display:grid;
+  grid-template-columns: repeat(20, 5%);
+  grid-template-rows: repeat(12, 8.33%);
+}
+
+
+.cell{
+  height: 100%;
+  width: 100%;
+}
+
+.cell > img {
+  height: 40px;
+  width: auto;
+  -webkit-filter: drop-shadow(0px 3px 4px rgba(0,0,0,0.4));
+  filter: drop-shadow(0px 3px 4px rgba(0,0,0,0.4));
+
+
+}
+
+#mapScreen > img {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  z-index: 15;
+  height: 13%;
+}
+
+#mapOptionsTitle {
+  width: 100%;
+  height: 20%;
+  text-align: center;
+  margin-bottom: -5px;
+}
+
+#mapOptionsButton {
+  -webkit-filter: drop-shadow(4px 4px 7px rgba(0,0,0,0.4));
+  filter: drop-shadow(4px 4px 7px rgba(0,0,0,0.4));
+  visibility: hidden;
+}
+
+#mapOptionsTitle p {
+  font-size: 15px;
+  margin-top: 6px;
+  margin-left: -17px;
+}
+
+#mapOptionsTitle img {
+  position: absolute;
+  right: 13px;
+  top: 6px;
+  height: 13%;
+  width: auto;
+}
