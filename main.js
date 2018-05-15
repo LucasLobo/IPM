@@ -75,6 +75,10 @@ function switchScreen(element) {
     cleanMap();
     fillMap('map');
   }
+
+  else if (element == 'addFriendButton') {
+    swapCurrent('friendsScreen', 'addFriendScreen');
+  }
 }
 
 function goBack() {

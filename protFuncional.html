@@ -385,10 +385,39 @@
                 <img src="img/chooseFriends.svg"/>
                 <p>Choose Friends</p>
               </div>
-              <div id="addFriendsButton">
+              <div id="addFriendsButton" onclick="switchScreen('addFriendButton')">
                 <img src="img/addfriend.svg"/>
                 <p>Add friends</p>
               </div>
+            </div>
+
+            <div class="screen" id="addFriendScreen">
+              <h3>Your friend's<br/>phone number</h3>
+
+              <p>916778265</p>
+
+              <table>
+                <tr>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>9</td>
+                </tr>
+                <tr>
+                  <td>del</td>
+                  <td>0</td>
+                  <td>ok</td>
+                </tr>
+              </table>
             </div>
 
 
@@ -405,8 +434,6 @@
           <div class="sideButtons" id="rightButton">
             <div id="zoomMore" onclick="zoomMore()"></div>
             <div id="zoomLess" onclick="zoomLess()"></div>
-
-
           </div>
         </div>
 
