@@ -261,8 +261,30 @@
 
 #friendsScreen {
   position: absolute;
-  visibility: visible;
+  visibility: hidden;
   overflow: hidden;
-  z-index: 15;
-  background-color: red;
+  z-index: 100;
+  background-color: rgba(60,60,60,1);
+}
+
+
+#friendsScreen > div {
+  height: 50%;
+}
+
+#friendsScreen > div:hover {
+  background-color: rgba(65,65,65,1);
+}
+
+#friendsScreen > div > img {
+  margin-top: 7%;
+  height: 65%;
+  -webkit-filter: drop-shadow(0px 3px 4px rgba(0,0,0,0.3));
+  filter: drop-shadow(0px 3px 4px rgba(0,0,0,0.3));
+}
+
+#friendsScreen > div > p {
+  margin-top: 3%;
+  font-size: 12px;
+  color: hsla(0,0%,80%,1);
 }

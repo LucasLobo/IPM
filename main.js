@@ -62,15 +62,16 @@ function switchScreen(element) {
   }
 
   else if (element == 'friendsButton') {
-    swapCurrent('mainScreen', 'mapScreen');
-    $('#mapOptionsButton').css('visibility','hidden');
-    cleanMap();
-    fillMap('friends');
+    swapCurrent('mainScreen', 'friendsScreen');
+
+
+    // Adicionar isto noutro sitio
+    //cleanMap();
+    //fillMap('friends');
   }
 
   else if (element == 'mapButton') {
     swapCurrent('mainScreen', 'mapScreen');
-    $('#mapOptionsButton').css('visibility','visible');
     cleanMap();
     fillMap('map');
   }
@@ -375,6 +376,7 @@ function toggleMapOption(id) {
 function fillMap(id) {
   let gridChildren = $("#grid").children();
   if(id === "map"){
+    $('#mapOptionsButton').css('visibility','visible');
     gridChildren.eq(25).html('<img class="party" onclick="popUp(\'party1\')" src="img/markers/party.svg"/>'); // B6
     gridChildren.eq(42).html('<img class="wifi" onclick="popUp(\'wifi\')"src="img/markers/wifi.svg">'); //C3
     gridChildren.eq(54).html('<img class="party" onclick="popUp(\'party2\')" src="img/markers/party.svg">'); //C15
@@ -397,6 +399,7 @@ function fillMap(id) {
 }
 
 function cleanMap() {
+  $('#mapOptionsButton').css('visibility','hidden');
   let gridChildren = $("#grid").children();
   gridChildren.each(function() {
     $(this).html("");
