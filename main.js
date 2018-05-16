@@ -9,6 +9,14 @@ var moneyOn = true;
 var partyOn = true;
 var wifiOn = true;
 
+var joaoNeveOn = true;
+var mariaSalinaOn = true;
+var jorgeForguesOn = true;
+var ritaQuerOn = true;
+var joseAlhoOn = true;
+var ricardoFeijaoOn = true;
+
+
 $(document).ready(function() {
   startTime();
   updateGrid();
@@ -78,6 +86,15 @@ function switchScreen(element) {
 
   else if (element == 'addFriendButton') {
     swapCurrent('friendsScreen', 'addFriendScreen');
+  }
+  else if (element == 'chooseFriendsButton') {
+    swapCurrent('friendsScreen', 'chooseFriendsScreen');
+  }
+
+  else if (element == 'chooseFriendsScreen') {
+    swapCurrent('chooseFriendsScreen', 'mapScreen');
+    cleanMap();
+    fillMap('friends');
   }
 }
 
@@ -426,4 +443,117 @@ function moveFriend(from, to) {
     });
     gridChildren.eq(from).html("");
   });
+}
+
+//------------------------------------------------------------------------------------
+
+
+function pressedNumber(id){
+  if(id=="1" && $('#addFriendScreen > p').eq(0).html().length<9){
+    $('#addFriendScreen > p').eq(0).append("1");
+  }
+  else if(id=="2" && $('#addFriendScreen > p').eq(0).html().length<9){
+    $('#addFriendScreen > p').eq(0).append("2");
+  }
+  else if(id=="3" && $('#addFriendScreen > p').eq(0).html().length<9){
+    $('#addFriendScreen > p').eq(0).append("3");
+  }
+  else if(id=="4" && $('#addFriendScreen > p').eq(0).html().length<9){
+    $('#addFriendScreen > p').eq(0).append("4");
+  }
+  else if(id=="5" && $('#addFriendScreen > p').eq(0).html().length<9){
+    $('#addFriendScreen > p').eq(0).append("5");
+  }
+  else if(id=="6" && $('#addFriendScreen > p').eq(0).html().length<9){
+    $('#addFriendScreen > p').eq(0).append("6");
+  }
+  else if(id=="7" && $('#addFriendScreen > p').eq(0).html().length<9){
+    $('#addFriendScreen > p').eq(0).append("7");
+  }
+  else if(id=="8" && $('#addFriendScreen > p').eq(0).html().length<9){
+    $('#addFriendScreen > p').eq(0).append("8");
+  }
+  else if(id=="9" && $('#addFriendScreen > p').eq(0).html().length<9){
+    $('#addFriendScreen > p').eq(0).append("9");
+  }
+  else if(id=="del"){
+    $('#addFriendScreen > p').eq(0).html($('#addFriendScreen > p').eq(0).html().substr(0, $('#addFriendScreen > p').eq(0).html().length-1));
+
+  }
+  else if(id=="0" && $('#addFriendScreen > p').eq(0).html().length<9){
+    $('#addFriendScreen > p').eq(0).append("0");
+  }
+  else if(id=="ok"){
+    $('#addFriendScreen > p').eq(0).append("ok");
+  }
+
+}
+
+function toggleAddOption(id){
+  if (id == 'joaoNeve') {
+    if (joaoNeveOn) {
+      joaoNeveOn = false;
+
+      $('#' + id +'Add').attr('src', 'img/minus-b.svg');
+    }
+    else {
+      joaoNeveOn = true;
+      $('#'+id +'Add').attr('src', 'img/add.svg');
+    }
+  }
+  if (id == 'mariaSalina') {
+    if (mariaSalinaOn) {
+      mariaSalinaOn = false;
+
+      $('#' + id +'Add').attr('src', 'img/minus-b.svg');
+    }
+    else {
+      mariaSalinaOn = true;
+      $('#'+id +'Add').attr('src', 'img/add.svg');
+    }
+  }
+  if (id == 'jorgeForgues') {
+    if (jorgeForguesOn) {
+      jorgeForguesOn = false;
+
+      $('#' + id +'Add').attr('src', 'img/minus-b.svg');
+    }
+    else {
+      jorgeForguesOn = true;
+      $('#'+id +'Add').attr('src', 'img/add.svg');
+    }
+  }
+  if (id == 'ritaQuer') {
+    if (ritaQuerOn) {
+      ritaQuerOn = false;
+
+      $('#' + id +'Add').attr('src', 'img/minus-b.svg');
+    }
+    else {
+      ritaQuerOn = true;
+      $('#'+id +'Add').attr('src', 'img/add.svg');
+    }
+  }
+  if (id == 'joseAlho') {
+    if (joseAlhoOn) {
+      joseAlhoOn = false;
+
+      $('#' + id +'Add').attr('src', 'img/minus-b.svg');
+    }
+    else {
+      joseAlhoOn = true;
+      $('#'+id +'Add').attr('src', 'img/add.svg');
+    }
+  }
+  if (id == 'ricardoFeijao') {
+    if (ricardoFeijaoOn) {
+      ricardoFeijaoOn = false;
+
+      $('#' + id +'Add').attr('src', 'img/minus-b.svg');
+    }
+    else {
+      ricardoFeijaoOn = true;
+      $('#'+id +'Add').attr('src', 'img/add.svg');
+    }
+  }
 }

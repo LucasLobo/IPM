@@ -337,3 +337,55 @@
   width: 33%;
 
 }
+
+/* ---------------------------------------------------------------*/
+#chooseFriendsScreen {
+  position: absolute;
+  visibility: hidden;
+  overflow: hidden;
+  z-index: 100;
+  background-color: rgba(60,60,60,1);
+  color: rgba(240,240,240,1);
+  font-size: 14px;
+}
+
+#chooseFriendsScreen h3{
+  padding: 5;
+  height: 30%;
+  text-align: left;
+}
+
+#chooseFriendsScreen > h3 > img {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  height: 10%;
+  width: auto;
+}
+
+#friendList {
+  position: relative;
+  overflow: hidden;
+  height: 65%;
+  width: 100%;
+}
+
+.singleFriend{
+  position: relative;
+  height: 40%;
+  font-size:13px;
+}
+
+.singleFriend > p{
+  padding-top:8px;
+  padding-left: 5px;
+  text-align: left;
+}
+
+.singleFriend > img{
+  position: absolute;
+  right: 15%;
+  top: 25%;
+  height: 35%;
+  width: auto;
+}

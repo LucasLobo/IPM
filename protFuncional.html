@@ -381,7 +381,7 @@
 
 
             <div class="screen" id="friendsScreen">
-              <div id="chooseFriendsButton">
+              <div id="chooseFriendsButton" onclick="switchScreen('chooseFriendsButton')">
                 <img src="img/chooseFriends.svg"/>
                 <p>Choose Friends</p>
               </div>
@@ -394,30 +394,67 @@
             <div class="screen" id="addFriendScreen">
               <h3>Your friend's<br/>phone number</h3>
 
-              <p>916778265</p>
+
+              <p></p>
 
               <table>
                 <tr>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
+                  <td id="1" onclick="pressedNumber('1')" >1</td>
+                  <td id="2" onclick="pressedNumber('2')" >2</td>
+                  <td id="3" onclick="pressedNumber('3')" >3</td>
                 </tr>
                 <tr>
-                  <td>4</td>
-                  <td>5</td>
-                  <td>6</td>
+                  <td id="4" onclick="pressedNumber('4')" >4</td>
+                  <td id="5" onclick="pressedNumber('5')" >5</td>
+                  <td id="6" onclick="pressedNumber('6')" >6</td>
                 </tr>
                 <tr>
-                  <td>7</td>
-                  <td>8</td>
-                  <td>9</td>
+                  <td id="7" onclick="pressedNumber('7')" >7</td>
+                  <td id="8" onclick="pressedNumber('8')" >8</td>
+                  <td id="9" onclick="pressedNumber('9')" >9</td>
                 </tr>
                 <tr>
-                  <td>del</td>
-                  <td>0</td>
-                  <td>ok</td>
+                  <td id="del" onclick="pressedNumber('del')" >del</td>
+                  <td id="0" onclick="pressedNumber('0')" >0</td>
+                  <td id="ok" onclick="pressedNumber('ok')" >ok</td>
                 </tr>
               </table>
+            </div>
+
+            <div class="screen" id="chooseFriendsScreen">
+              <h3>
+                <p>Friends List</p>
+                <img src="img/position.svg"  onclick="switchScreen('chooseFriendsScreen')"/>
+              </h3>
+
+              <div class="dragscroll" id="friendList">
+                <div class="singleFriend " id="joaoNeve">
+                      <p>João Neve</p>
+                      <img src="img/add.svg" id="joaoNeveAdd" onclick="toggleAddOption('joaoNeve')"/>
+                  </div>
+                <div class="singleFriend " id="mariaSalina">
+                      <p>Maria Salina</p>
+                      <img src="img/add.svg" id="mariaSalinaAdd" onclick="toggleAddOption('mariaSalina')"/>
+                  </div>
+                <div class="singleFriend " id="jorgeForgues">
+                      <p>JorgeForgues</p>
+                      <img src="img/add.svg" id="jorgeForguesAdd" onclick="toggleAddOption('jorgeForgues')"/>
+                  </div>
+                <div class="singleFriend " id="ritaQuer">
+                      <p>Rita Quer</p>
+                      <img src="img/add.svg" / id="ritaQuerAdd" onclick="toggleAddOption('ritaQuer')"/>
+                  </div>
+                <div class="singleFriend " id="joseAlho">
+                      <p>Jose Alho</p>
+                      <img src="img/add.svg" id="joseAlhoAdd" onclick="toggleAddOption('joseAlho')"/>
+                  </div>
+                <div class="singleFriend " id="ricardoFeijao">
+                      <p>Ricardo Feijao</p>
+                      <img src="img/add.svg" id="ricardoFeijaoAdd" onclick="toggleAddOption('ricardoFeijao')"/>
+                  </div>
+
+              </div>
+
             </div>
 
 
