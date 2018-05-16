@@ -17,6 +17,9 @@ var joseAlhoOn = true;
 var ricardoFeijaoOn = true;
 
 
+var friends = [];
+
+
 $(document).ready(function() {
   startTime();
   updateGrid();
@@ -449,51 +452,44 @@ function moveFriend(from, to) {
 
 
 function pressedNumber(id){
-  if(id=="1" && $('#addFriendScreen > p').eq(0).html().length<9){
-    $('#addFriendScreen > p').eq(0).append("1");
-  }
-  else if(id=="2" && $('#addFriendScreen > p').eq(0).html().length<9){
-    $('#addFriendScreen > p').eq(0).append("2");
-  }
-  else if(id=="3" && $('#addFriendScreen > p').eq(0).html().length<9){
-    $('#addFriendScreen > p').eq(0).append("3");
-  }
-  else if(id=="4" && $('#addFriendScreen > p').eq(0).html().length<9){
-    $('#addFriendScreen > p').eq(0).append("4");
-  }
-  else if(id=="5" && $('#addFriendScreen > p').eq(0).html().length<9){
-    $('#addFriendScreen > p').eq(0).append("5");
-  }
-  else if(id=="6" && $('#addFriendScreen > p').eq(0).html().length<9){
-    $('#addFriendScreen > p').eq(0).append("6");
-  }
-  else if(id=="7" && $('#addFriendScreen > p').eq(0).html().length<9){
-    $('#addFriendScreen > p').eq(0).append("7");
-  }
-  else if(id=="8" && $('#addFriendScreen > p').eq(0).html().length<9){
-    $('#addFriendScreen > p').eq(0).append("8");
-  }
-  else if(id=="9" && $('#addFriendScreen > p').eq(0).html().length<9){
-    $('#addFriendScreen > p').eq(0).append("9");
-  }
-  else if(id=="del"){
+  if (id == "del") {
     $('#addFriendScreen > p').eq(0).html($('#addFriendScreen > p').eq(0).html().substr(0, $('#addFriendScreen > p').eq(0).html().length-1));
+  }
 
+  else if (id == "ok") {
+    $.getJSON("people.json", function(data) {
+      $.each(data.people, function() {
+        if (this.number === $('#addFriendScreen > p').eq(0).text()) {
+          /*FIXME*/
+        }
+      });
+    });
   }
-  else if(id=="0" && $('#addFriendScreen > p').eq(0).html().length<9){
-    $('#addFriendScreen > p').eq(0).append("0");
-  }
-  else if(id=="ok"){
-    $('#addFriendScreen > p').eq(0).append("ok");
+
+  else if ($('#addFriendScreen > p').eq(0).html().length<9) {
+    $('#addFriendScreen > p').eq(0).append(id);
   }
 
 }
 
+
+function fillFriendList() {
+  $.getJSON("people.json", function(data) {
+    $.each(data.people, function() {
+      if (this.friend == true) {
+        console.log(this.name);
+        /*FIXME*/
+      }
+    });
+  });
+}
+
+
 function toggleAddOption(id){
+
   if (id == 'joaoNeve') {
     if (joaoNeveOn) {
       joaoNeveOn = false;
-
       $('#' + id +'Add').attr('src', 'img/minus-b.svg');
     }
     else {

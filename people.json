@@ -1,8 +1,40 @@
-{"people":[
-  {"number":"916778265", "name":"Lucas"},
-  {"number":"913068452", "name":"Ricardo"},
-  {"number":"962094801", "name":"Joana"},
-  {"number":"922938044", "name":"Marcos"},
-  {"number":"939043284", "name":"Pedro"},
-  {"number":"968843026", "name":"Marta"}
-]}
+{
+	"people": [
+		{
+			"number": "962094801",
+			"name": "Joana",
+			"friend" : false,
+			"onMap" : false
+		},
+		{
+			"number": "916778265",
+			"name": "Lucas",
+			"friend" : true,
+			"onMap" : false
+		},
+		{
+			"number": "922938044",
+			"name": "Marcos",
+			"friend" : false,
+			"onMap" : false
+		},
+		{
+			"number": "968843026",
+			"name": "Marta",
+			"friend" : false,
+			"onMap" : false
+		},
+		{
+			"number": "913068452",
+			"name": "Ricardo",
+			"friend" : false,
+			"onMap" : false
+		},
+		{
+			"number": "939043284",
+			"name": "Pedro",
+			"friend" : false,
+			"onMap" : false
+		}
+	]
+}
