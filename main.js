@@ -9,21 +9,19 @@ var moneyOn = true;
 var partyOn = true;
 var wifiOn = true;
 
-var joaoNeveOn = true;
-var mariaSalinaOn = true;
-var jorgeForguesOn = true;
-var ritaQuerOn = true;
-var joseAlhoOn = true;
-var ricardoFeijaoOn = true;
-
-
-var friends = [];
-
+let friendsFile;
 
 $(document).ready(function() {
   startTime();
   updateGrid();
+  readJSON();
 });
+
+function readJSON() {
+  $.getJSON("people.json", function(data) {
+    friendsFile = data;
+  });
+}
 
 function disableEvents() {
   $('#mapButton').css('pointer-events','none');
@@ -414,11 +412,13 @@ function fillMap(id) {
     gridChildren.eq(185).html('<img class="inem" onclick="popUp(\'inem\')" src="img/markers/inem.svg">'); //J6
     gridChildren.eq(192).html('<img class="money" onclick="popUp(\'atm\')" src="img/markers/money.svg">'); //J13
   }
+
   else if(id === "friends"){
-    gridChildren.eq(25).html('<img class="friend" onclick="" src="img/markers/friend.svg"/>');
-    gridChildren.eq(23).html('<img class="friend" onclick="" src="img/markers/friend.svg"/>');
-    gridChildren.eq(56).html('<img class="friend" onclick="" src="img/markers/friend.svg"/>');
-    gridChildren.eq(98).html('<img class="friend" onclick="" src="img/markers/friend.svg"/>');
+    $.each(friendsFile.people, function() {
+      if (this.onMap == true) {
+        gridChildren.eq(this.pos).html('<img class="friend" onclick="" src="img/markers/friend.svg"/>');
+      }
+    });
   }
 }
 
@@ -448,108 +448,62 @@ function moveFriend(from, to) {
   });
 }
 
-//------------------------------------------------------------------------------------
-
 
 function pressedNumber(id){
+  let textBox = $('#addFriendScreen > p').eq(0);
   if (id == "del") {
-    $('#addFriendScreen > p').eq(0).html($('#addFriendScreen > p').eq(0).html().substr(0, $('#addFriendScreen > p').eq(0).html().length-1));
+  textBox.html(textBox.html().substr(0, textBox.html().length-1));
   }
-
   else if (id == "ok") {
-    $.getJSON("people.json", function(data) {
-      $.each(data.people, function() {
-        if (this.number === $('#addFriendScreen > p').eq(0).text()) {
-          /*FIXME*/
-        }
-      });
-    });
-  }
-
-  else if ($('#addFriendScreen > p').eq(0).html().length<9) {
-    $('#addFriendScreen > p').eq(0).append(id);
-  }
-
-}
-
-
-function fillFriendList() {
-  $.getJSON("people.json", function(data) {
-    $.each(data.people, function() {
-      if (this.friend == true) {
-        console.log(this.name);
-        /*FIXME*/
+    let found = false;
+    $.each(friendsFile.people, function() {
+      if (this.number === textBox.text()) {
+        found = true;
+        this.friend = true;
+        textBox.html(this.name);
       }
     });
+    if (found === false) {
+      textBox.css("backgroundColor","rgba(230, 100, 100, 1)");
+      textBox.delay(1500).animate({"backgroundColor":"rgba(240,240,240,1)"},1000);
+    }
+    else {
+      textBox.css("backgroundColor","rgba(100, 230, 100, 1)");
+      textBox.delay(1500).animate({
+        "backgroundColor":"rgba(240,240,240,1)",
+        "color":"hsla(0,0%,10%,0)"
+      },1000, function() {
+        textBox.html("");
+        textBox.css("color","hsla(0,0%,10%,1)");
+      });
+    }
+  }
+  else if (textBox.html().length<9) {
+    textBox.append(id);
+  }
+}
+
+function fillFriendList() {
+  $.each(friendsFile.people, function() {
+    if (this.friend == true) {
+      $("#friendList").append('<div class="singleFriend" id="' + this.number + '"><p>' + this.name + "<br>" + this.number + '</p><img src="img/minus-b.svg"/ onclick="toggleFriendOption(this)"></div>');
+    }
   });
 }
 
+function toggleFriendOption(element){
+  let number = $(element).parent().attr('id');
+  $.each(friendsFile.people, function() {
+    if (this.number === number) {
 
-function toggleAddOption(id){
-
-  if (id == 'joaoNeve') {
-    if (joaoNeveOn) {
-      joaoNeveOn = false;
-      $('#' + id +'Add').attr('src', 'img/minus-b.svg');
+      if (this.onMap == true) {
+        this.onMap = false;
+        $(element).attr('src','img/minus-b.svg');
+      }
+      else {
+        this.onMap = true;
+        $(element).attr('src','img/add.svg');
+      }
     }
-    else {
-      joaoNeveOn = true;
-      $('#'+id +'Add').attr('src', 'img/add.svg');
-    }
-  }
-  if (id == 'mariaSalina') {
-    if (mariaSalinaOn) {
-      mariaSalinaOn = false;
-
-      $('#' + id +'Add').attr('src', 'img/minus-b.svg');
-    }
-    else {
-      mariaSalinaOn = true;
-      $('#'+id +'Add').attr('src', 'img/add.svg');
-    }
-  }
-  if (id == 'jorgeForgues') {
-    if (jorgeForguesOn) {
-      jorgeForguesOn = false;
-
-      $('#' + id +'Add').attr('src', 'img/minus-b.svg');
-    }
-    else {
-      jorgeForguesOn = true;
-      $('#'+id +'Add').attr('src', 'img/add.svg');
-    }
-  }
-  if (id == 'ritaQuer') {
-    if (ritaQuerOn) {
-      ritaQuerOn = false;
-
-      $('#' + id +'Add').attr('src', 'img/minus-b.svg');
-    }
-    else {
-      ritaQuerOn = true;
-      $('#'+id +'Add').attr('src', 'img/add.svg');
-    }
-  }
-  if (id == 'joseAlho') {
-    if (joseAlhoOn) {
-      joseAlhoOn = false;
-
-      $('#' + id +'Add').attr('src', 'img/minus-b.svg');
-    }
-    else {
-      joseAlhoOn = true;
-      $('#'+id +'Add').attr('src', 'img/add.svg');
-    }
-  }
-  if (id == 'ricardoFeijao') {
-    if (ricardoFeijaoOn) {
-      ricardoFeijaoOn = false;
-
-      $('#' + id +'Add').attr('src', 'img/minus-b.svg');
-    }
-    else {
-      ricardoFeijaoOn = true;
-      $('#'+id +'Add').attr('src', 'img/add.svg');
-    }
-  }
+  });
 }

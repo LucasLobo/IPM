@@ -2,39 +2,45 @@
 	"people": [
 		{
 			"number": "962094801",
-			"name": "Joana",
+			"name": "Joana Silva",
 			"friend" : false,
-			"onMap" : false
+			"onMap" : false,
+			"pos": 4
 		},
 		{
 			"number": "916778265",
-			"name": "Lucas",
-			"friend" : true,
-			"onMap" : false
+			"name": "Lucas Lobo",
+			"friend" : false,
+			"onMap" : false,
+			"pos": 20
 		},
 		{
 			"number": "922938044",
-			"name": "Marcos",
+			"name": "Marcos Pêgo",
 			"friend" : false,
-			"onMap" : false
+			"onMap" : false,
+			"pos": 32
 		},
 		{
 			"number": "968843026",
-			"name": "Marta",
+			"name": "Marta Soares",
 			"friend" : false,
-			"onMap" : false
+			"onMap" : false,
+			"pos": 56
 		},
 		{
 			"number": "913068452",
-			"name": "Ricardo",
+			"name": "Ricardo Ferreira",
 			"friend" : false,
-			"onMap" : false
+			"onMap" : false,
+			"pos": 212
 		},
 		{
 			"number": "939043284",
-			"name": "Pedro",
+			"name": "Pedro Fernandes",
 			"friend" : false,
-			"onMap" : false
+			"onMap" : false,
+			"pos": 160
 		}
 	]
 }
