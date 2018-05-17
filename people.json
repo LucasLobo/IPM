@@ -3,34 +3,38 @@
 		{
 			"number": "962094801",
 			"name": "Joana Silva",
-			"friend" : true,
-			"onMap" : true,
+			"friend" : false,
+			"onMap" : false,
 			"icon" : "img/friends/joana.svg",
-			"pos": 29
+			"pos": 29,
+			"trackable": true
 		},
 		{
 			"number": "916778265",
 			"name": "Lucas Lobo",
-			"friend" : true,
-			"onMap" : true,
+			"friend" : false,
+			"onMap" : false,
 			"icon" : "img/friends/lucas.svg",
-			"pos": 22
+			"pos": 22,
+			"trackable": true
 		},
 		{
 			"number": "922938044",
 			"name": "Marcos Pêgo",
 			"friend" : true,
-			"onMap" : true,
+			"onMap" : false,
 			"icon" : "img/friends/marcos.svg",
-			"pos": 34
+			"pos": 34,
+			"trackable": true
 		},
 		{
 			"number": "968843026",
 			"name": "Marta Soares",
 			"friend" : true,
-			"onMap" : true,
+			"onMap" : false,
 			"icon" : "img/friends/marta.svg",
-			"pos": 56
+			"pos": 56,
+			"trackable": false
 		},
 		{
 			"number": "913068452",
@@ -38,15 +42,17 @@
 			"friend" : true,
 			"onMap" : true,
 			"icon" : "img/friends/ricardo.svg",
-			"pos": 212
+			"pos": 212,
+			"trackable": true
 		},
 		{
 			"number": "939043284",
 			"name": "Pedro Fernandes",
-			"friend" : true,
-			"onMap" : true,
+			"friend" : false,
+			"onMap" : false,
 			"icon" : "img/friends/pedro.svg",
-			"pos": 168
+			"pos": 168,
+			"trackable": true
 		}
 	]
 }

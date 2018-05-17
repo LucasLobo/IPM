@@ -12,6 +12,8 @@ var wifiOn = true;
 let friendsFile;
 let keepMoving = true;
 
+let currentMap;
+
 $(document).ready(function() {
   startTime();
   updateGrid();
@@ -88,6 +90,7 @@ function switchScreen(element) {
     swapCurrent('mainScreen', 'mapScreen');
     cleanMap();
     fillMap('map');
+    currentMap = 'map';
   }
 
   else if (element == 'addFriendButton') {
@@ -103,6 +106,7 @@ function switchScreen(element) {
     swapCurrent('friendsScreen', 'mapScreen');
     cleanMap();
     fillMap('friends');
+    currentMap = 'friends';
   }
   enableEvents();
 }
@@ -423,7 +427,7 @@ function fillMap(id) {
 
   else if(id === "friends"){
     $.each(friendsFile.people, function() {
-      if (this.onMap == true) {
+      if (this.onMap == true && this.trackable == true) {
         gridChildren.eq(this.pos).html('<img class="friend" onclick="popUpFriend(\'' + this.number +'\')" src="' + this.icon +'"/>');
       }
     });
@@ -497,10 +501,13 @@ function pressedNumber(id){
 
 function fillFriendList() {
   $.each(friendsFile.people, function() {
-    if (this.friend == true) {
+    if (this.friend == true){
       let icon = 'img/add.svg';
       if (this.onMap == true) {
         icon = 'img/minus-b.svg';
+      }
+      if (this.trackable == false) {
+        icon = 'img/minus.svg';
       }
       $("#friendList").append('<div class="singleFriend" id="' + this.number + '"><p>' + this.name + "<br>" + this.number + '</p><img src="' + icon + '"/ onclick="toggleFriendOption(this)"></div>');
     }
@@ -515,7 +522,10 @@ function toggleFriendOption(element){
   let number = $(element).parent().attr('id');
   $.each(friendsFile.people, function() {
     if (this.number === number) {
-      if (this.onMap == true) {
+      if (this.trackable == false) {
+
+      }
+      else if (this.onMap == true) {
         this.onMap = false;
         $(element).attr('src','img/add.svg');
       }
@@ -577,4 +587,37 @@ function toggleMoving() {
   else {
     $("#cpButton-keepMoving-text").html("Não continuar a mover amigos");
   }
+}
+
+function switchSettings(from, to) {
+  $('#'+from).css('visibility', 'hidden');
+  $('#'+to).css('visibility', 'visible');
+  if (from == 'settingsScreen-1') {
+    $('.settingsButtonRight').css('visibility','hidden');
+  }
+  else {
+    $('.settingsButtonRight').css('visibility','visible');
+  }
+
+}
+
+function changeTrackable() {
+  $.each(friendsFile.people, function() {
+    if (this.number === "968843026") {
+      this.trackable = this.trackable ? false : true;
+      if (this.trackable) {
+        $("#cpButton-changeTrackable-text").html('Desligar tracking a Marta');
+      }
+      else {
+        $("#cpButton-changeTrackable-text").html('Ligar tracking a Marta');
+      }
+      clearFriendList();
+      fillFriendList();
+      if (currentMap == 'friends') {
+        cleanMap();
+        fillMap('friends');
+      }
+
+    }
+  });
 }

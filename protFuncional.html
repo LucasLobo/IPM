@@ -58,13 +58,33 @@
             </div>
 
             <div class="screen" id="settingsScreen">
+
               <div class="settingsScreen" id="settingsScreen-1">
+                <img src="img/friends/you.svg" />
+                <p>
+                  Gonçalo Pereira
+                </p>
+                <p>
+                  931029483
+                </p>
               </div>
+              <div class="settingsButtonRight" onclick="switchSettings('settingsScreen-1','settingsScreen-2')">
+                <strong>></strong>
+              </div>
+
               <div class="settingsScreen" id="settingsScreen-2">
+                <h4>Let people know your location</h4>
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider round"></span>
+                </label>
+
+                <div class="settingsButtonLeft" onclick="switchSettings('settingsScreen-2','settingsScreen-1')">
+                  <strong><</strong>
+                </div>
               </div>
-              <div class="settingsScreen" id="settingsScreen-3">
-                <p style="margin-top:30px;padding:20px">ecrã por acabar</p>
-              </div>
+
+
             </div>
 
             <div class="screen" id="confirmPurchase">
@@ -458,8 +478,6 @@
           </div>
         </div>
 
-
-
       </div>
       <div id=controlPanel>
         <div class="cpRow">
@@ -483,7 +501,8 @@
           <h3 id="cpButton-keepMoving-text">Continuar a mover amigos</h3>
         </div>
         <div class="cpRow">
-          <div class="cpButton" id="cpButton-6"></div>
+          <div class="cpButton" id="cpButton-changeTrackable" onclick="changeTrackable()" onmouseenter="hover(this)" onmouseout="unhover(this)"></div>
+          <h3 id="cpButton-changeTrackable-text">Ligar tracking a Marta</h3>
         </div>
         <div class="cpRow">
           <div class="cpButton" id="cpButton-7"></div>
