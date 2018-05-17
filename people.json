@@ -3,44 +3,50 @@
 		{
 			"number": "962094801",
 			"name": "Joana Silva",
-			"friend" : false,
-			"onMap" : false,
-			"pos": 4
+			"friend" : true,
+			"onMap" : true,
+			"icon" : "img/friends/joana.svg",
+			"pos": 29
 		},
 		{
 			"number": "916778265",
 			"name": "Lucas Lobo",
-			"friend" : false,
-			"onMap" : false,
-			"pos": 20
+			"friend" : true,
+			"onMap" : true,
+			"icon" : "img/friends/lucas.svg",
+			"pos": 22
 		},
 		{
 			"number": "922938044",
 			"name": "Marcos Pêgo",
-			"friend" : false,
-			"onMap" : false,
-			"pos": 32
+			"friend" : true,
+			"onMap" : true,
+			"icon" : "img/friends/marcos.svg",
+			"pos": 34
 		},
 		{
 			"number": "968843026",
 			"name": "Marta Soares",
-			"friend" : false,
-			"onMap" : false,
+			"friend" : true,
+			"onMap" : true,
+			"icon" : "img/friends/marta.svg",
 			"pos": 56
 		},
 		{
 			"number": "913068452",
 			"name": "Ricardo Ferreira",
-			"friend" : false,
-			"onMap" : false,
+			"friend" : true,
+			"onMap" : true,
+			"icon" : "img/friends/ricardo.svg",
 			"pos": 212
 		},
 		{
 			"number": "939043284",
 			"name": "Pedro Fernandes",
-			"friend" : false,
-			"onMap" : false,
-			"pos": 160
+			"friend" : true,
+			"onMap" : true,
+			"icon" : "img/friends/pedro.svg",
+			"pos": 168
 		}
 	]
 }

@@ -10,6 +10,7 @@ var partyOn = true;
 var wifiOn = true;
 
 let friendsFile;
+let keepMoving = true;
 
 $(document).ready(function() {
   startTime();
@@ -27,12 +28,20 @@ function disableEvents() {
   $('#mapButton').css('pointer-events','none');
   $('#settingsButton').css('pointer-events','none');
   $('#friendsButton').css('pointer-events','none');
+
+  $('#friendsMapButton').css('pointer-events','none');
+  $('#chooseFriendsButton').css('pointer-events','none');
+  $('#addFriendsButton').css('pointer-events','none');
 }
 
 function enableEvents() {
   $('#mapButton').css('pointer-events','auto');
   $('#settingsButton').css('pointer-events','auto');
   $('#friendsButton').css('pointer-events','auto');
+
+  $('#friendsMapButton').css('pointer-events','auto');
+  $('#chooseFriendsButton').css('pointer-events','auto');
+  $('#addFriendsButton').css('pointer-events','auto');
 }
 
 function startTime() {
@@ -60,6 +69,7 @@ function swapCurrent(current, next) {
   $('#' + current).css({'visibility' : 'hidden'});
   $('#' + next).css({'visibility' : 'visible'});
   screenStack.push(next);
+  setTimeout(enableEvents, 100);
 }
 
 function switchScreen(element) {
@@ -72,11 +82,6 @@ function switchScreen(element) {
 
   else if (element == 'friendsButton') {
     swapCurrent('mainScreen', 'friendsScreen');
-
-
-    // Adicionar isto noutro sitio
-    //cleanMap();
-    //fillMap('friends');
   }
 
   else if (element == 'mapButton') {
@@ -90,13 +95,16 @@ function switchScreen(element) {
   }
   else if (element == 'chooseFriendsButton') {
     swapCurrent('friendsScreen', 'chooseFriendsScreen');
+    clearFriendList();
+    fillFriendList();
   }
 
-  else if (element == 'chooseFriendsScreen') {
-    swapCurrent('chooseFriendsScreen', 'mapScreen');
+  else if (element == 'friendsMapButton') {
+    swapCurrent('friendsScreen', 'mapScreen');
     cleanMap();
     fillMap('friends');
   }
+  enableEvents();
 }
 
 function goBack() {
@@ -227,7 +235,6 @@ function zoomMore() {
     $('#map').height(height + 100);
     updateGrid();
   }
-
 }
 
 function zoomLess() {
@@ -295,14 +302,12 @@ function popUp(flag) {
     $('#mapInfoTitle > p').eq(1).html("");
     $('#mapInfoContent > p').eq(0).html("You are currently here.");
   }
-
   $('#mapInfo').css('visibility','visible');
 }
 
 function hidePopUp(){
   $('#mapOptionsButton').css('visibility','visible');
   $('#mapInfo').css('visibility','hidden');
-
 }
 
 function showMapOptions() {
@@ -404,21 +409,27 @@ function fillMap(id) {
     gridChildren.eq(54).html('<img class="party" onclick="popUp(\'party2\')" src="img/markers/party.svg">'); //C15
     gridChildren.eq(68).html('<img class="food" onclick="popUp(\'starbucks\')" src="img/markers/food.svg">'); //D9
     gridChildren.eq(70).html('<img class="food" onclick="popUp(\'mcdonalds\')" src="img/markers/food.svg">'); //D11
-    gridChildren.eq(85).html('<img class="food" onclick="popUp(\'you\')" src="img/markers/friend.svg">'); //E6
+    gridChildren.eq(85).html('<img class="you" onclick="popUp(\'you\')" src="img/friends/you.svg">'); //E6
     gridChildren.eq(115).html('<img class="bus" onclick="popUp(\'bus\')" src="img/markers/bus.svg">'); //F16
     gridChildren.eq(121).html('<img class="money" onclick="popUp(\'atm\')" src="img/markers/money.svg">'); //G2
     gridChildren.eq(150).html('<img class="party" onclick="popUp(\'party3\')" src="img/markers/party.svg">'); //H11
     gridChildren.eq(175).html('<img class="wifi" onclick="popUp(\'wifi\')" src="img/markers/wifi.svg">'); //I16
     gridChildren.eq(185).html('<img class="inem" onclick="popUp(\'inem\')" src="img/markers/inem.svg">'); //J6
     gridChildren.eq(192).html('<img class="money" onclick="popUp(\'atm\')" src="img/markers/money.svg">'); //J13
+
+
+    $(".you").css('height',30);
   }
 
   else if(id === "friends"){
     $.each(friendsFile.people, function() {
       if (this.onMap == true) {
-        gridChildren.eq(this.pos).html('<img class="friend" onclick="" src="img/markers/friend.svg"/>');
+        gridChildren.eq(this.pos).html('<img class="friend" onclick="popUpFriend(\'' + this.number +'\')" src="' + this.icon +'"/>');
       }
     });
+    gridChildren.eq(85).html('<img class="you" onclick="popUpFriend(\'you\')" src="img/friends/you.svg">'); //E6
+    $(".you").css('height',30);
+    $(".friend").css('height',30);
   }
 }
 
@@ -430,7 +441,7 @@ function cleanMap() {
   });
 }
 
-function moveFriend(from, to) {
+function moveFriend(from, to, friend) {
   let gridChildren = $("#grid").children();
   let leftDif = gridChildren.eq(to).offset().left - gridChildren.eq(from).offset().left;
   let topDif = gridChildren.eq(to).offset().top - gridChildren.eq(from).offset().top;
@@ -445,6 +456,7 @@ function moveFriend(from, to) {
       'top': 0
     });
     gridChildren.eq(from).html("");
+    friend.pos = to;
   });
 }
 
@@ -486,24 +498,83 @@ function pressedNumber(id){
 function fillFriendList() {
   $.each(friendsFile.people, function() {
     if (this.friend == true) {
-      $("#friendList").append('<div class="singleFriend" id="' + this.number + '"><p>' + this.name + "<br>" + this.number + '</p><img src="img/minus-b.svg"/ onclick="toggleFriendOption(this)"></div>');
+      let icon = 'img/add.svg';
+      if (this.onMap == true) {
+        icon = 'img/minus-b.svg';
+      }
+      $("#friendList").append('<div class="singleFriend" id="' + this.number + '"><p>' + this.name + "<br>" + this.number + '</p><img src="' + icon + '"/ onclick="toggleFriendOption(this)"></div>');
     }
   });
+}
+
+function clearFriendList() {
+  $("#friendList").html("");
 }
 
 function toggleFriendOption(element){
   let number = $(element).parent().attr('id');
   $.each(friendsFile.people, function() {
     if (this.number === number) {
-
       if (this.onMap == true) {
         this.onMap = false;
-        $(element).attr('src','img/minus-b.svg');
+        $(element).attr('src','img/add.svg');
       }
       else {
         this.onMap = true;
-        $(element).attr('src','img/add.svg');
+        $(element).attr('src','img/minus-b.svg');
       }
     }
   });
+}
+
+
+function popUpFriend(flag){
+  let paragraphs = $('#singleFriendInfo > p');
+  let headers = $('#singleFriendInfo > h6');
+  let images = $('#singleFriendInfo > img');
+
+  if (flag == 'you') {
+    paragraphs.eq(0).html("<b>You</b>");
+    headers.eq(0).html('931029483');
+    images.eq(0).attr('src','img/friends/you.svg');
+  }
+  else {
+    $.each(friendsFile.people, function() {
+      if (this.number === flag) {
+        paragraphs.eq(0).html("<b>"+this.name+"</b>");
+        headers.eq(0).html(flag);
+        images.eq(0).attr('src',this.icon);
+      }
+    });
+  }
+
+
+  $('#friendsInfo').css('visibility','visible');
+}
+
+function hidePopUpFriend() {
+  $('#friendsInfo').css('visibility','hidden');
+}
+
+
+
+function movePeople() {
+  $.each(friendsFile.people, function() {
+    let final = Math.floor((Math.random())*240);
+    if ((final < 11*20) && (final % 20) != 19 && (final != 85)) {
+      moveFriend(this.pos, final, this);
+    }
+  });
+  if (keepMoving) setTimeout(movePeople,3500);
+}
+
+function toggleMoving() {
+  keepMoving = keepMoving ? false : true;
+
+  if (keepMoving) {
+    $("#cpButton-keepMoving-text").html("Continuar a mover amigos");
+  }
+  else {
+    $("#cpButton-keepMoving-text").html("Não continuar a mover amigos");
+  }
 }

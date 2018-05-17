@@ -10,12 +10,10 @@
     <link rel="stylesheet" type="text/css" href="dep/jquery-ui.structure.min.css">
     <link rel="stylesheet" type="text/css" href="dep/jquery-ui.theme.min.css">
 
-
     <script src="dep/jquery.min.js"></script>
     <script src="dep/jquery-ui.min.js"></script>
     <script src="dep/draggable.js"></script>
     <script src="main.js"></script>
-
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -353,8 +351,6 @@
                 <p>Title</p>
                 <img src="img/close.svg" onclick="hidePopUp()"/>
                 <p>11h-23h</p>
-
-
               </div>
 
               <div class="dragscroll" id="mapInfoContent">
@@ -379,8 +375,11 @@
 
             </div>
 
-
-            <div class="screen" id="friendsScreen">
+            <div class="screen dragscroll" id="friendsScreen">
+              <div id="friendsMapButton" onclick="switchScreen('friendsMapButton')">
+                <img src="img/position.svg"/>
+                <p>Friends Map</p>
+              </div>
               <div id="chooseFriendsButton" onclick="switchScreen('chooseFriendsButton')">
                 <img src="img/chooseFriends.svg"/>
                 <p>Choose Friends</p>
@@ -421,43 +420,27 @@
             </div>
 
             <div class="screen" id="chooseFriendsScreen">
-              <h3>
-                <p>Friends List</p>
-                <img src="img/position.svg"  onclick="switchScreen('chooseFriendsScreen')"/>
-              </h3>
+              <h3>Friends List</h3>
 
               <div class="dragscroll" id="friendList">
 
-                <!--
-                <div class="singleFriend" id="joaoNeve">
-                      <p>João Neve</p>
-                      <img src="img/add.svg" id="joaoNeveAdd" onclick="toggleAddOption('joaoNeve')"/>
-                </div>
-                <div class="singleFriend" id="mariaSalina">
-                      <p>Maria Salina</p>
-                      <img src="img/add.svg" id="mariaSalinaAdd" onclick="toggleAddOption('mariaSalina')"/>
-                </div>
-                <div class="singleFriend" id="jorgeForgues">
-                      <p>JorgeForgues</p>
-                      <img src="img/add.svg" id="jorgeForguesAdd" onclick="toggleAddOption('jorgeForgues')"/>
-                </div>
-                <div class="singleFriend" id="ritaQuer">
-                      <p>Rita Quer</p>
-                      <img src="img/add.svg" id="ritaQuerAdd" onclick="toggleAddOption('ritaQuer')"/>
-                </div>
-                <div class="singleFriend" id="joseAlho">
-                      <p>Jose Alho</p>
-                      <img src="img/add.svg" id="joseAlhoAdd" onclick="toggleAddOption('joseAlho')"/>
-                </div>
-                <div class="singleFriend" id="ricardoFeijao">
-                      <p>Ricardo Feijao</p>
-                      <img src="img/add.svg" id="ricardoFeijaoAdd" onclick="toggleAddOption('ricardoFeijao')"/>
-                </div>-->
-
               </div>
+
 
             </div>
 
+            <div class="screen" id="friendsInfo">
+              <img src="img/close.svg" onclick="hidePopUpFriend()"/>
+              <div class="dragscroll">
+
+                <div id="singleFriendInfo">
+                  <img src="img/friends/lucas.svg">
+                  <p>Lucas Lobo</p>
+                  <h6></h6>
+                </div>
+              </div>
+
+            </div>
 
 
             <div id="frame">
@@ -492,10 +475,12 @@
           <h3 id="cpButton-money-text">Com dinheiro</h3>
         </div>
         <div class="cpRow">
-          <div class="cpButton" id="cpButton-4"></div>
+          <div class="cpButton" id="cpButton-moveFriends" onclick="movePeople()" onmouseenter="hover(this)" onmouseout="unhover(this)"></div>
+          <h3 id="cpButton-moveFriends-text">Mover amigos</h3>
         </div>
         <div class="cpRow">
-          <div class="cpButton" id="cpButton-5"></div>
+          <div class="cpButton" id="cpButton-keepMoving" onclick="toggleMoving()" onmouseenter="hover(this)" onmouseout="unhover(this)"></div>
+          <h3 id="cpButton-keepMoving-text">Continuar a mover amigos</h3>
         </div>
         <div class="cpRow">
           <div class="cpButton" id="cpButton-6"></div>
