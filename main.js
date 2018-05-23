@@ -509,7 +509,7 @@ function fillFriendList() {
       if (this.trackable == false) {
         icon = 'img/minus.svg';
       }
-      $("#friendList").append('<div class="singleFriend" id="' + this.number + '"><p>' + this.name + "<br>" + this.number + '</p><img src="' + icon + '"/ onclick="toggleFriendOption(this)"></div>');
+      $("#friendList").append('<div class="singleFriend" id="' + this.number + '"><p onclick="popUpFriend(' + this.number + ')">' + this.name + "<br>" + this.number + '</p><img src="' + icon + '"/ onclick="toggleFriendOption(this)"></div>');
     }
   });
 }
@@ -539,6 +539,8 @@ function toggleFriendOption(element){
 
 
 function popUpFriend(flag){
+
+
   let paragraphs = $('#singleFriendInfo > p');
   let headers = $('#singleFriendInfo > h6');
   let images = $('#singleFriendInfo > img');
@@ -550,7 +552,7 @@ function popUpFriend(flag){
   }
   else {
     $.each(friendsFile.people, function() {
-      if (this.number === flag) {
+      if (this.number == flag) {
         paragraphs.eq(0).html("<b>"+this.name+"</b>");
         headers.eq(0).html(flag);
         images.eq(0).attr('src',this.icon);

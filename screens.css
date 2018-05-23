@@ -350,7 +350,7 @@
   position: absolute;
   visibility: hidden;
   overflow: hidden;
-  z-index: 100;
+  z-index: 25;
   background-color: rgba(60,60,60,1);
   color: rgba(240,240,240,1);
   font-size: 12px;
@@ -399,7 +399,7 @@
   position: absolute;
   visibility: hidden;
   overflow: hidden;
-  z-index: 100;
+  z-index: 30;
   background-color: rgba(60,60,60,1);
   color: rgba(240,240,240,1);
   font-size: 14px;
@@ -447,25 +447,13 @@
   margin-top: -7.5%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 #friendsInfo{
   position: absolute;
   visibility: hidden;
   overflow: hidden;
-  z-index: 10;
+  z-index: 35;
   width: 90%;
-  margin: 5% 5% 0 5%;
+  margin: 25% 5% 0 5%;
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   border-radius: 7px;
