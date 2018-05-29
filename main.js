@@ -18,6 +18,8 @@ $(document).ready(function() {
   startTime();
   updateGrid();
   readJSON();
+
+  $('#rightButton').css('visibility','hidden');
 });
 
 function readJSON() {
@@ -34,6 +36,8 @@ function disableEvents() {
   $('#friendsMapButton').css('pointer-events','none');
   $('#chooseFriendsButton').css('pointer-events','none');
   $('#addFriendsButton').css('pointer-events','none');
+
+  $("#friendList").css('pointer-events','none');
 }
 
 function enableEvents() {
@@ -44,6 +48,8 @@ function enableEvents() {
   $('#friendsMapButton').css('pointer-events','auto');
   $('#chooseFriendsButton').css('pointer-events','auto');
   $('#addFriendsButton').css('pointer-events','auto');
+
+  $("#friendList").css('pointer-events','auto');
 }
 
 function startTime() {
@@ -80,6 +86,7 @@ function switchScreen(element) {
   }
   else if (element == 'settingsButton') {
     swapCurrent('mainScreen', 'settingsScreen');
+    $('#mapOptionsButton').css('visibility','hidden');
   }
 
   else if (element == 'friendsButton') {
@@ -410,13 +417,13 @@ function fillMap(id) {
     $('#mapOptionsButton').css('visibility','visible');
     gridChildren.eq(25).html('<img class="party" onclick="popUp(\'party1\')" src="img/markers/party.svg"/>'); // B6
     gridChildren.eq(42).html('<img class="wifi" onclick="popUp(\'wifi\')"src="img/markers/wifi.svg">'); //C3
-    gridChildren.eq(54).html('<img class="party" onclick="popUp(\'party2\')" src="img/markers/party.svg">'); //C15
+    gridChildren.eq(54).html('<img class="party" onclick="popUp(\'party2\')" src="img/markers/party-blue.svg">'); //C15
     gridChildren.eq(68).html('<img class="food" onclick="popUp(\'starbucks\')" src="img/markers/food.svg">'); //D9
     gridChildren.eq(70).html('<img class="food" onclick="popUp(\'mcdonalds\')" src="img/markers/food.svg">'); //D11
     gridChildren.eq(85).html('<img class="you" onclick="popUp(\'you\')" src="img/friends/you.svg">'); //E6
     gridChildren.eq(115).html('<img class="bus" onclick="popUp(\'bus\')" src="img/markers/bus.svg">'); //F16
     gridChildren.eq(121).html('<img class="money" onclick="popUp(\'atm\')" src="img/markers/money.svg">'); //G2
-    gridChildren.eq(150).html('<img class="party" onclick="popUp(\'party3\')" src="img/markers/party.svg">'); //H11
+    gridChildren.eq(150).html('<img class="party" onclick="popUp(\'party3\')" src="img/markers/party-green.svg">'); //H11
     gridChildren.eq(175).html('<img class="wifi" onclick="popUp(\'wifi\')" src="img/markers/wifi.svg">'); //I16
     gridChildren.eq(185).html('<img class="inem" onclick="popUp(\'inem\')" src="img/markers/inem.svg">'); //J6
     gridChildren.eq(192).html('<img class="money" onclick="popUp(\'atm\')" src="img/markers/money.svg">'); //J13

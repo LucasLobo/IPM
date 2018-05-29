@@ -11,7 +11,7 @@
 		},
 		{
 			"number": "916778265",
-			"name": "Lucas Lobo",
+			"name": "Nuno Fonseca",
 			"friend" : true,
 			"onMap" : false,
 			"icon" : "img/friends/lucas.svg",
@@ -20,7 +20,7 @@
 		},
 		{
 			"number": "922938044",
-			"name": "Marcos Pêgo",
+			"name": "Luís Andrade",
 			"friend" : true,
 			"onMap" : false,
 			"icon" : "img/friends/marcos.svg",
@@ -40,7 +40,7 @@
 			"number": "913068452",
 			"name": "Ricardo Ferreira",
 			"friend" : true,
-			"onMap" : true,
+			"onMap" : false,
 			"icon" : "img/friends/ricardo.svg",
 			"pos": 212,
 			"trackable": true
