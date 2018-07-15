@@ -2,7 +2,7 @@
   color: hsla(0,0%,90%,1);
   padding: 10%;
   padding-top: 40%;
-  background-image: url("img/background.jpg");
+  background-image: url("../img/background.jpg");
   background-size: cover;
   box-shadow: inset 0 0 0 1000px rgba(40,40,40,0.4);
   visibility: visible;

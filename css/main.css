@@ -186,7 +186,3 @@ html, body {
   color: hsla(0,0%,90%,1);
   margin-top: 9px;
 }
-
-#cpButton-4, #cpButton-5, #cpButton-6, #cpButton-7 {
-  visibility: hidden;
-}

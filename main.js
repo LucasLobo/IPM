@@ -20,6 +20,7 @@ $(document).ready(function() {
   readJSON();
 
   $('#rightButton').css('visibility','hidden');
+
 });
 
 function readJSON() {
@@ -29,27 +30,15 @@ function readJSON() {
 }
 
 function disableEvents() {
-  $('#mapButton').css('pointer-events','none');
-  $('#settingsButton').css('pointer-events','none');
-  $('#friendsButton').css('pointer-events','none');
-
-  $('#friendsMapButton').css('pointer-events','none');
-  $('#chooseFriendsButton').css('pointer-events','none');
-  $('#addFriendsButton').css('pointer-events','none');
-
-  $("#friendList").css('pointer-events','none');
+  Array.prototype.forEach.call(document.getElementsByClassName("dragscroll"), individual => {
+    individual.style.pointerEvents = 'none';
+  });
 }
 
 function enableEvents() {
-  $('#mapButton').css('pointer-events','auto');
-  $('#settingsButton').css('pointer-events','auto');
-  $('#friendsButton').css('pointer-events','auto');
-
-  $('#friendsMapButton').css('pointer-events','auto');
-  $('#chooseFriendsButton').css('pointer-events','auto');
-  $('#addFriendsButton').css('pointer-events','auto');
-
-  $("#friendList").css('pointer-events','auto');
+  Array.prototype.forEach.call(document.getElementsByClassName("dragscroll"), individual => {
+    individual.style.pointerEvents = 'auto';
+  });
 }
 
 function startTime() {
